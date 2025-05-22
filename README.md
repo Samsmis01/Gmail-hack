@@ -1,5 +1,5 @@
 
-# KATABUM PHISHING - Installation sur Termux
+# GMAIL HACK - Installation sur Termux
 
 Outil de phishing avancé avec affichage en temps réel des identifiants capturés directement dans la console Termux.
 
