@@ -89,7 +89,7 @@ generer_lien_ngrok() {
 # Fonction pour générer un lien avec Serveo
 generer_lien_serveo() {
     echo -e "${JAUNE}HEXTECH 🦠 [*] Connexion à Serveo pour générer un lien public...${NC}"
-    ssh -R 80:localhost:3000 serveo.net -p 22 || {
+    ssh -R 80:localhost:8080 serveo.net -p 22 || {
         echo -e "${ROUGE}[!] Échec de la connexion à Serveo. Vérifiez votre connexion internet.${NC}"
     }
 }
