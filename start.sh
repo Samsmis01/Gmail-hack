@@ -40,7 +40,7 @@ surveiller_donnees() {
 # Fonction pour démarrer le serveur PHP
 demarrer_serveur_php() {
     echo -e "${BLEU}[•] Démarrage du serveur PHP...${NC}"
-    php -S localhost:3000 > /dev/null 2>&1 & # Lancer le serveur en arrière-plan
+    php -S localhost:8080 > /dev/null 2>&1 & # Lancer le serveur en arrière-plan
     sleep 2 # Attendre que le serveur démarre
     surveiller_donnees & # Démarrer la surveillance en arrière-plan
 }
