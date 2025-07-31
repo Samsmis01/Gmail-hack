@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vérification de sécurité - Google</title>
+    <style>
+        :root {
+            --blue: #1a73e8;
+            --gray-border: #dadce0;
+            --gray-text: #5f6368;
+            --gray-light: #f8f9fa;
+            --green: #34a853;
+        }
+        
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            background: #fff;
+            margin: 0;
+            padding: 0;
+            color: #202124;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        
+        .header {
+            padding: 16px 32px;
+            text-align: right;
+        }
+        
+        .header a {
+            color: var(--gray-text);
+            text-decoration: none;
+            margin-left: 16px;
+            font-size: 13px;
+        }
+        
+        .content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .security-container {
+            max-width: 450px;
+            width: 100%;
+            text-align: center;
+            padding: 40px;
+        }
+        
+        .logo {
+            margin-bottom: 20px;
+        }
+        
+        .logo img {
+            height: 24px;
+        }
+        
+        .security-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            position: relative;
+        }
+        
+        .spinner {
+            width: 100%;
+            height: 100%;
+            border: 8px solid #f1f1f1;
+            border-top: 8px solid var(--blue);
+            border-radius: 50%;
+            animation: spin 1.5s linear infinite;
+        }
+        
+        .checkmark {
+            display: none;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .checkmark-circle {
+            stroke-dasharray: 166;
+            stroke-dashoffset: 166;
+            stroke-width: 4;
+            stroke-miterlimit: 10;
+            stroke: var(--green);
+            fill: none;
+            animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+        }
+        
+        .checkmark-check {
+            transform-origin: 50% 50%;
+            stroke-dasharray: 48;
+            stroke-dashoffset: 48;
+            stroke: var(--green);
+            animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.6s forwards;
+        }
+        
+        .title {
+            font-size: 24px;
+            margin: 20px 0 10px;
+            font-weight: 400;
+        }
+        
+        .message {
+            color: var(--gray-text);
+            margin-bottom: 30px;
+            font-size: 16px;
+        }
+        
+        .progress-container {
+            width: 100%;
+            height: 4px;
+            background: var(--gray-border);
+            margin: 30px 0;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background: var(--blue);
+            transition: width 35s linear;
+        }
+        
+        .timer {
+            font-size: 14px;
+            color: var(--gray-text);
+            margin-top: 10px;
+        }
+        
+        .success-message {
+            display: none;
+            color: var(--green);
+            font-weight: 500;
+            margin-top: 20px;
+            font-size: 16px;
+        }
+        
+        .footer {
+            background: var(--gray-light);
+            padding: 24px 32px;
+            font-size: 12px;
+            color: var(--gray-text);
+            text-align: center;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @keyframes stroke {
+            100% { stroke-dashoffset: 0; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <a href="https://support.google.com">Aide</a>
+        <a href="https://policies.google.com/privacy">Confidentialité</a>
+        <a href="https://policies.google.com/terms">Conditions</a>
+    </header>
+    
+    <main class="content">
+        <div class="security-container">
+            <div class="logo">
+                <img src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png" alt="Google" width="75">
+            </div>
+            
+            <div class="security-icon">
+                <div class="spinner" id="spinner"></div>
+                <svg class="checkmark" id="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                    <circle class="checkmark-circle" cx="26" cy="26" r="25" fill="none"/>
+                    <path class="checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+                </svg>
+            </div>
+            
+            <h1 class="title">Vérification de sécurité en cours</h1>
+            <p class="message">Nous vérifions que cette connexion vient bien de vous. Cela peut prendre quelques instants.</p>
+            
+            <div class="progress-container">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+            
+            <div class="timer" id="timer">Temps restant : 35 secondes</div>
+            
+            <div class="success-message" id="successMessage">
+                Vérification terminée. Vous êtes en sécurité.
+            </div>
+        </div>
+    </main>
+    
+    <footer class="footer">
+        <div>Français (France)</div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const progressBar = document.getElementById('progressBar');
+            const timer = document.getElementById('timer');
+            const spinner = document.getElementById('spinner');
+            const checkmark = document.getElementById('checkmark');
+            const successMessage = document.getElementById('successMessage');
+            
+            // Démarrer la barre de progression
+            progressBar.style.width = '100%';
+            
+            // Mettre à jour le timer
+            let seconds = 35;
+            const countdown = setInterval(function() {
+                seconds--;
+                timer.textContent = `Temps restant : ${seconds} seconde${seconds !== 1 ? 's' : ''}`;
+                
+                if (seconds <= 0) {
+                    clearInterval(countdown);
+                    timer.style.display = 'none';
+                    
+                    // Afficher la vérification réussie
+                    spinner.style.display = 'none';
+                    checkmark.style.display = 'block';
+                    successMessage.style.display = 'block';
+                    
+                    // Changer le message principal
+                    document.querySelector('.title').textContent = 'Vérification de sécurité réussie';
+                    document.querySelector('.message').textContent = 'Nous avons confirmé que cette connexion vient bien de vous.';
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html
