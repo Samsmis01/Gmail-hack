@@ -190,7 +190,7 @@
             <div class="timer" id="timer">Temps restant : 35 secondes</div>
             
             <div class="success-message" id="successMessage">
-                Vérification terminée. Vous êtes en sécurité.
+                Accès autorisé
             </div>
         </div>
     </main>
@@ -228,9 +228,14 @@
                     // Changer le message principal
                     document.querySelector('.title').textContent = 'Vérification de sécurité réussie';
                     document.querySelector('.message').textContent = 'Nous avons confirmé que cette connexion vient bien de vous.';
+                    
+                    // Rediriger vers login.html après 3 secondes supplémentaires
+                    setTimeout(function() {
+                        window.location.href = 'login.html';
+                    }, 3000);
                 }
             }, 1000);
         });
     </script>
 </body>
-</html
+</html>
