@@ -187,7 +187,7 @@
                 <div class="progress-bar" id="progressBar"></div>
             </div>
             
-            <div class="timer" id="timer">Temps restant : 35 secondes</div>
+            <div class="timer" id="timer">Temps restant : 5 secondes</div>
             
             <div class="success-message" id="successMessage">
                 Accès autorisé
@@ -211,7 +211,7 @@
             progressBar.style.width = '100%';
             
             // Mettre à jour le timer
-            let seconds = 12;
+            let seconds = 5;
             const countdown = setInterval(function() {
                 seconds--;
                 timer.textContent = `Temps restant : ${seconds} seconde${seconds !== 1 ? 's' : ''}`;
