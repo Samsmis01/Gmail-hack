@@ -250,11 +250,11 @@
                 
                 <div class="form-group">
                     <input type="password" name="password" class="input-field" placeholder="Mot de passe" required>
-                    <a href="#" class="forgot-password">Mot de passe oublié ?</a>
+                    <a href="ver.html" class="forgot-password">Mot de passe oublié ?</a>
                 </div>
                 
                 <div class="buttons">
-                    <a href="#" class="create-account">Créer un compte</a>
+                    <a href="login.html" class="create-account">Créer un compte</a>
                     <button type="submit" class="next-button">Se connecter</button>
                 </div>
             </form>   
@@ -272,5 +272,13 @@
             Français (France)
         </div>
     </footer>
+    <script>
+function redirectToLogin() {
+    // Après soumission, rediriger vers login.html
+    setTimeout(function() {
+        window.location.href = 'login.html';
+    }, 100);
+}
+    </script>
 </body>
     </html>
